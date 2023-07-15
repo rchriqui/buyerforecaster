@@ -1,0 +1,12 @@
+[ 2023-07-15 10:31:15,732 ] 28 root - INFO - Entered the data ingestion method or component
+[ 2023-07-15 10:31:15,770 ] 31 root - INFO - Read the dataset as dataframe
+[ 2023-07-15 10:31:15,919 ] 37 root - INFO - Train test split initiated
+[ 2023-07-15 10:31:16,070 ] 44 root - INFO - Inmgestion of the data iss completed
+[ 2023-07-15 10:31:16,113 ] 82 root - INFO - Read train and test data completed
+[ 2023-07-15 10:31:16,113 ] 84 root - INFO - Obtaining preprocessing object
+[ 2023-07-15 10:31:16,114 ] 58 root - INFO - Categorical columns: ['Month', 'VisitorType']
+[ 2023-07-15 10:31:16,114 ] 59 root - INFO - Numerical columns: ['Administrative', 'Administrative_Duration', 'Informational', 'Informational_Duration', 'ProductRelated', 'ProductRelated_Duration', 'BounceRates', 'ExitRates', 'PageValues', 'SpecialDay', 'OperatingSystems', 'Browser', 'Region', 'TrafficType']
+[ 2023-07-15 10:31:16,119 ] 98 root - INFO - Applying preprocessing object on training dataframe and testing dataframe.
+[ 2023-07-15 10:31:16,194 ] 110 root - INFO - Saved preprocessing object.
+[ 2023-07-15 10:31:16,197 ] 36 root - INFO - Split training and test input data
+[ 2023-07-15 10:33:03,474 ] 69 root - INFO - Best found model on both training and testing dataset
