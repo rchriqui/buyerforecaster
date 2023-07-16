@@ -2,19 +2,24 @@
 
 This project aims to predict whether a customer will make a purchase or not based on various features. It covers the entire end-to-end process of a machine learning project, including data exploration, model development, creation of a Flask app, and deployment on AWS.
 
-Table of Contents
-Installation
-Data
-Modeling
-Flask App
-Deployment
-Support
-License
-Installation
+## Table of Contents
+
+- [Installation](#installation)
+- [Data](#data)
+- [Modeling](#modeling)
+- [Flask App](#flask-app)
+- [Deployment](#deployment)
+- [Support](#support)
+- [License](#license)
+
+## Installation
+
 To run this project locally, follow these steps:
 
-Clone the repository:
-git clone https://github.com/your-username/customer-purchase-prediction.git
+1. Clone the repository:
+
+   ```shell
+   git clone https://github.com/your-username/customer-purchase-prediction.git
 
 Install the required dependencies:
 pip install -r requirements.txt
