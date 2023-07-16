@@ -1,0 +1,63 @@
+[ 2023-07-16 09:51:32,372 ] 187 werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.102:5000
+[ 2023-07-16 09:51:32,376 ] 187 werkzeug - INFO - [33mPress CTRL+C to quit[0m
+[ 2023-07-16 09:51:33,681 ] 187 werkzeug - INFO - 127.0.0.1 - - [16/Jul/2023 09:51:33] "GET /predictdata HTTP/1.1" 200 -
+[ 2023-07-16 09:56:14,432 ] 1414 app - ERROR - Exception on /predictdata [POST]
+Traceback (most recent call last):
+  File "/Users/robin/Desktop/my_projects/buyerforecaster/src/pipeline/predict_pipeline.py", line 20, in predict
+    data_scaled=preprocessor.transform(features)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sklearn/utils/_set_output.py", line 140, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sklearn/compose/_column_transformer.py", line 816, in transform
+    Xs = self._fit_transform(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sklearn/compose/_column_transformer.py", line 670, in _fit_transform
+    return Parallel(n_jobs=self.n_jobs)(
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sklearn/utils/parallel.py", line 65, in __call__
+    return super().__call__(iterable_with_config)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/joblib/parallel.py", line 1855, in __call__
+    return output if self.return_generator else list(output)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/joblib/parallel.py", line 1781, in _get_sequential_output
+    for func, args, kwargs in iterable:
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sklearn/utils/parallel.py", line 61, in <genexpr>
+    iterable_with_config = (
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sklearn/compose/_column_transformer.py", line 673, in <genexpr>
+    X=_safe_indexing(X, column, axis=1),
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sklearn/utils/__init__.py", line 353, in _safe_indexing
+    return _pandas_indexing(X, indices, indices_dtype, axis=axis)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/sklearn/utils/__init__.py", line 199, in _pandas_indexing
+    return indexer[:, key] if axis else indexer[key]
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pandas/core/indexing.py", line 925, in __getitem__
+    return self._getitem_tuple(key)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pandas/core/indexing.py", line 1109, in _getitem_tuple
+    return self._getitem_tuple_same_dim(tup)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pandas/core/indexing.py", line 806, in _getitem_tuple_same_dim
+    retval = getattr(retval, self.name)._getitem_axis(key, axis=i)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pandas/core/indexing.py", line 1153, in _getitem_axis
+    return self._getitem_iterable(key, axis=axis)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pandas/core/indexing.py", line 1093, in _getitem_iterable
+    keyarr, indexer = self._get_listlike_indexer(key, axis)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pandas/core/indexing.py", line 1314, in _get_listlike_indexer
+    self._validate_read_indexer(keyarr, indexer, axis)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/pandas/core/indexing.py", line 1377, in _validate_read_indexer
+    raise KeyError(f"{not_found} not in index")
+KeyError: "['Weekend'] not in index"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 43, in predict_datapoint
+    results = predict_pipeline.predict(pred_df)
+  File "/Users/robin/Desktop/my_projects/buyerforecaster/src/pipeline/predict_pipeline.py", line 25, in predict
+    raise CustomException(e,sys)
+src.exception.CustomException: Error occured in python script name [/Users/robin/Desktop/my_projects/buyerforecaster/src/pipeline/predict_pipeline.py] line number [20] error message["['Weekend'] not in index"]
+[ 2023-07-16 09:56:14,454 ] 187 werkzeug - INFO - 127.0.0.1 - - [16/Jul/2023 09:56:14] "[35m[1mPOST /predictdata HTTP/1.1[0m" 500 -

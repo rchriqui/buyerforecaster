@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Website Visitor Behavior Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        .form-control {
+            margin-bottom: 10px;
+        }
+        .btn-primary {
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Prediction App</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <!-- Add more navigation links as needed -->
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="login">
+                <h1>Website Visitor Data Prediction</h1>
+        
+                <form action="{{ url_for('predict_datapoint')}}" method="post">
+                    <h1>
+                        <legend>Website Visitor Data</legend>
+                    </h1>
+                    <div class="mb-3">
+                        <label class="form-label">Administrative Pages Visited</label>
+                        <input class="form-control" type="number" name="Administrative" placeholder="Enter count" min='0' required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Administrative Duration</label>
+                        <input class="form-control" type="number" name="Administrative_Duration" placeholder="Enter duration in seconds" min='0' step="0.01" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Informational Pages Visited</label>
+                        <input class="form-control" type="number" name="Informational" placeholder="Enter count" min='0' required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Informational Duration</label>
+                        <input class="form-control" type="number" name="Informational_Duration" placeholder="Enter duration in seconds" min='0' step="0.01" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Product Related Pages Visited</label>
+                        <input class="form-control" type="number" name="ProductRelated" placeholder="Enter count" min='0' required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Product Related Duration</label>
+                        <input class="form-control" type="number" name="ProductRelated_Duration" placeholder="Enter duration in seconds" min='0' step="0.01" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Bounce Rates</label>
+                        <input class="form-control" type="number" name="BounceRates" placeholder="Enter bounce rate" min='0' max='1' step="0.01" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Exit Rates</label>
+                        <input class="form-control" type="number" name="ExitRates" placeholder="Enter exit rate" min='0' max='1' step="0.01" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Page Values</label>
+                        <input class="form-control" type="number" name="PageValues" placeholder="Enter page value" min='0' step="0.01" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Special Day</label>
+                        <input class="form-control" type="number" name="SpecialDay" placeholder="Enter special day" min='0' max='1' step="0.01" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Month</label>
+                        <input class="form-control" type="text" name="Month" placeholder="Enter month" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Operating Systems</label>
+                        <input class="form-control" type="number" name="OperatingSystems" placeholder="Enter operating system type" min='1' required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Browser</label>
+                        <input class="form-control" type="number" name="Browser" placeholder="Enter browser type" min='1' required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Region</label>
+                        <input class="form-control" type="number" name="Region" placeholder="Enter region type" min='1' required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Traffic Type</label>
+                        <input class="form-control" type="number" name="TrafficType" placeholder="Enter traffic type" min='1' required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Visitor Type</label>
+                        <input class="form-control" type="text" name="VisitorType" placeholder="Enter visitor type" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Weekend</label>
+                        <select class="form-control" name="Weekend" required>
+                            <option value="False">No</option>
+                            <option value="True">Yes</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <input class="btn btn-primary" type="submit" value="Predict Revenue" required />
+                    </div>
+                </form>
+                <h2>
+                    The prediction is {{results}}
+                </h2>
+            </div>
+                </form>
+                
+            </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

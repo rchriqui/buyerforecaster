@@ -4,3 +4,4 @@ seaborn
 imblearn
 feature_engine
 xgboost
+flask

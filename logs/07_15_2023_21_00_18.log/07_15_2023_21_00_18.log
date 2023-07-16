@@ -1,0 +1,61 @@
+[ 2023-07-15 21:00:23,655 ] 187 werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.102:5000
+[ 2023-07-15 21:00:23,655 ] 187 werkzeug - INFO - [33mPress CTRL+C to quit[0m
+[ 2023-07-15 21:02:03,783 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:02:03] "GET / HTTP/1.1" 200 -
+[ 2023-07-15 21:02:03,998 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:02:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[ 2023-07-15 21:02:11,543 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:02:11] "[33mGET /prediction HTTP/1.1[0m" 404 -
+[ 2023-07-15 21:02:55,042 ] 1414 app - ERROR - Exception on /predictdata [GET]
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 20, in predict_datapoint
+    return render_template('home.html')
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/templating.py", line 150, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+  File "/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/flask/templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: home.html
+[ 2023-07-15 21:02:55,054 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:02:55] "[35m[1mGET /predictdata HTTP/1.1[0m" 500 -
+[ 2023-07-15 21:03:16,730 ] 187 werkzeug - ERROR - 127.0.0.1 - - [15/Jul/2023 21:03:16] code 400, message Bad request version ('%\x9fÆãG\x9a$P°äág')
+[ 2023-07-15 21:03:16,730 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:03:16] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03\x15\x12\x06î5\x1a¢AôÊtØÚÌ<\x15ç Ä\x19øûR{Ð\x91®®> l  %\x9fÆãG\x9a$P°äág[0m" HTTPStatus.BAD_REQUEST -
+[ 2023-07-15 21:03:16,732 ] 187 werkzeug - ERROR - 127.0.0.1 - - [15/Jul/2023 21:03:16] code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00')
+[ 2023-07-15 21:03:16,733 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:03:16] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03@\x0b\x0f\x19u´Ð2\x87Óµ\x0dÖjgÚVo·ç\x89í\x10ÚÌ)\x0dÏy«A! \\ö\x0cY§\x92^\x7fúzM~\x83 \x8aäç²\x93Ù³\x80\x06#L\x96\x19\x86.ä5\x85\x00 ZZ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93ZZ\x00\x00Di\x00\x05\x00\x03\x02h2\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00\x1b\x00\x03\x02\x00\x02\x00\x0b\x00\x02\x01\x00\x00\x17\x00\x00\x00-\x00\x02\x01\x01\x00\x12\x00\x00\x00\x0d\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00[0m" HTTPStatus.BAD_REQUEST -
+[ 2023-07-15 21:03:16,734 ] 187 werkzeug - ERROR - 127.0.0.1 - - [15/Jul/2023 21:03:16] code 400, message Bad request version ('::\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93::\x00\x00\x00')
+[ 2023-07-15 21:03:16,735 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:03:16] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03\x88*\x8bq\x86X¦m\x884\x14ýªR\x0b=\x13\x84ÿºG\x91¼{Ô\x88\x04Ï&©i\x18 ;ºþä\\È.R7\\¼ùY\x0fêèu\x9b\x1b§%\x94V\x87zæ ÑïÇ|\x80\x00 ::\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93::\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+[ 2023-07-15 21:03:16,739 ] 187 werkzeug - ERROR - 127.0.0.1 - - [15/Jul/2023 21:03:16] code 400, message Bad request version ('jj\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93úú\x00\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00+\x00\x07\x06')
+[ 2023-07-15 21:03:16,739 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:03:16] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03sáM\x03ðX¨ý\x12<È3:ø\x7fRHìX\x83ãÓJ}¼£F|­\x9be¦ N\x9e7WR\x8e\x11ï\x16W\x1d\x0bâÎàam\x97N¨#¡"_£ò"j!8_â\x00 jj\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93úú\x00\x00\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00+\x00\x07\x06[0m" HTTPStatus.BAD_REQUEST -
+[ 2023-07-15 21:05:46,728 ] 187 werkzeug - ERROR - 127.0.0.1 - - [15/Jul/2023 21:05:46] code 400, message Bad request version ('ò3Ê\x1bÔ½\x0f\x90o\x08Me%ý\x84ý\\WìÚ\x89{\x12\x83|Ût$')
+[ 2023-07-15 21:05:46,729 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:05:46] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03\x83ÄlM!\x03\x09LÔë\x84|0¢]r\x12t²+ß~\x8cWÈ£.2\x14öÞ\x14 ò3Ê\x1bÔ½\x0f\x90o\x08Me%ý\x84ý\\WìÚ\x89{\x12\x83|Ût$[0m" HTTPStatus.BAD_REQUEST -
+[ 2023-07-15 21:05:46,729 ] 187 werkzeug - ERROR - 127.0.0.1 - - [15/Jul/2023 21:05:46] code 400, message Bad request version ('\x00\x02\x01\x00\x00\x17\x00\x00\x00+\x00\x07\x06**\x03\x04\x03\x03\x00-\x00\x02\x01\x01\x00\x1b\x00\x03\x02\x00\x02\x00\x12\x00\x00Di\x00\x05\x00\x03\x02h2\x00')
+[ 2023-07-15 21:05:46,731 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:05:46] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03U¢*KB\x14\x84½\x8bØ©FpÉ/ïû\x92I¼\x07x\x1a/[\x94\x08\x06k\x7f\x15\x12 ®\x18Ý(fH\x98\x09\x9d>öþ\x14I\x19>×<ò\x99~)®\x83p¶ñûÈ|Ë¤\x00 **\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93::\x00\x00ÿ\x01\x00\x01\x00\x00\x0b\x00\x02\x01\x00\x00\x17\x00\x00\x00+\x00\x07\x06**\x03\x04\x03\x03\x00-\x00\x02\x01\x01\x00\x1b\x00\x03\x02\x00\x02\x00\x12\x00\x00Di\x00\x05\x00\x03\x02h2\x00[0m" HTTPStatus.BAD_REQUEST -
+[ 2023-07-15 21:05:46,734 ] 187 werkzeug - ERROR - 127.0.0.1 - - [15/Jul/2023 21:05:46] code 400, message Bad request version ('h_ßÚ\x97Ñ\xad7Ë>çõ\x99Ì«Á©ñ·O÷×\x00')
+[ 2023-07-15 21:05:46,734 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:05:46] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03y\x16è\x0dd\x8bi³¬ümSá¥PgîÈZfòÉ\x18\x14¸Ï?ÇcZÙ\x91 £ùO\x85\x14\x9a±vá\x0bh_ßÚ\x97Ñ­7Ë>çõ\x99Ì«Á©ñ·O÷×\x00 [0m" HTTPStatus.BAD_REQUEST -
+[ 2023-07-15 21:05:46,735 ] 187 werkzeug - ERROR - 127.0.0.1 - - [15/Jul/2023 21:05:46] code 400, message Bad request version ('\x00\x02\x01\x00\x00')
+[ 2023-07-15 21:05:46,736 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:05:46] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03h)7K^Ó\x8b\x7fÉpä¿@·:¨\x00´\x12\x12õ½º Ûät)Â\x9bÞ\x94 ?f\x0c,Uò\x8føs¿R´ÔÝ\x12\x1dgø~\x9fëß\x83S+\x7fÔê\x0fÙÖf\x00 ZZ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93\x9a\x9a\x00\x00\x003\x00+\x00)êê\x00\x01\x00\x00\x1d\x00 ÞF\x1f9û\x87Îþa\x96V\x81Ç.Ì\x87\x9cÛÍ\x85\x82¸=¿ë\x88PÅ\x10ç'R\x00-\x00\x02\x01\x01\x00\x0d\x00\x14\x00\x12\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x02\x01\x00\x1b\x00\x03\x02\x00\x02\x00\x0b\x00\x02\x01\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+[ 2023-07-15 21:05:47,919 ] 187 werkzeug - ERROR - 127.0.0.1 - - [15/Jul/2023 21:05:47] code 400, message Bad request version ('zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93úú\x00\x00\x00\x12\x00\x00Di\x00\x05\x00\x03\x02h2\x00')
+[ 2023-07-15 21:05:47,919 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:05:47] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03_R\x83v\x0e¼K\x91\x87îQ\x83½\x7f\x0cØo\x98ê°Äñç¦ePÙ\x13ZË>ê ÕB\x1a\x94x:³µm\x9e±1¢\x1e\x01@I\x02Ó*h¶\x9cY\x16Ò¤w\x93×w\x9d\x00 zz\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93úú\x00\x00\x00\x12\x00\x00Di\x00\x05\x00\x03\x02h2\x00[0m" HTTPStatus.BAD_REQUEST -
+[ 2023-07-15 21:05:47,920 ] 187 werkzeug - ERROR - 127.0.0.1 - - [15/Jul/2023 21:05:47] code 400, message Bad request version ('ü¢Èó\x98ïl')
+[ 2023-07-15 21:05:47,921 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:05:47] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03Ê\x89\x19kYðÜ·£ìã/ç3x[«n\x1eQ°\\p;N©âÜOÑÈ\x82 ü¢Èó\x98ïl[0m" HTTPStatus.BAD_REQUEST -
+[ 2023-07-15 21:05:47,921 ] 187 werkzeug - ERROR - 127.0.0.1 - - [15/Jul/2023 21:05:47] code 400, message Bad request version ('\x1a\x1a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93::\x00\x00\x00')
+[ 2023-07-15 21:05:47,923 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:05:47] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03Æ¬?[uJ)ÄêO\x91°Â#Ör!#Ãó]¥K»¬^áº«ÐÊ\x1d \x1d\x04éTÎ\x87àW\x93dØ\x9e\x034gNò+rK\x1fôv¾\x00¸M3\x82\x9be\x90\x00 \x1a\x1a\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x01\x93::\x00\x00\x00[0m" HTTPStatus.BAD_REQUEST -
+[ 2023-07-15 21:05:47,923 ] 187 werkzeug - ERROR - 127.0.0.1 - - [15/Jul/2023 21:05:47] code 400, message Bad request version ('èÐ×;(>ïQQôFBÝs\x00')
+[ 2023-07-15 21:05:47,926 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:05:47] "[35m[1m\x16\x03\x01\x02\x00\x01\x00\x01ü\x03\x03ë7\x14qpæî¨¥,\x7fyý½%Ç\x08,z\x85\x90¯ï\x82ùxCàE\x89?\x87 SÞ\x15eÜÙ\x13;\x9c\x067Ä\x11àv~\x86\x85èÐ×;(>ïQQôFBÝs\x00 [0m" HTTPStatus.BAD_REQUEST -
+[ 2023-07-15 21:05:53,912 ] 187 werkzeug - INFO - 127.0.0.1 - - [15/Jul/2023 21:05:53] "GET / HTTP/1.1" 200 -
